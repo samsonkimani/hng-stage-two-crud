@@ -30,7 +30,7 @@ def generate_uuid():
 
 @app.route('/')
 def index():
-    return jsponify({'message': 'follow the documentation to use the API'})
+    return jsonify({'message': 'follow the documentation to use the API'})
 
 def user_exists(email):
     user = db.query(User).filter_by(email=email).first()
