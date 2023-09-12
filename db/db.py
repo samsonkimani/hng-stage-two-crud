@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
 from os import getenv
 from models.user import Base
+from os import environ
 
 class DB:
     """
@@ -17,15 +18,10 @@ class DB:
         Constructor
         """
 
-        # user = getenv('USER')
-        # password = getenv('PASSWORD')
-        # host = getenv('HOST')
-        # db_name = getenv('DATABASE')
-
-        user = 'root'
-        password = '123456'
-        host = 'localhost'
-        db_name = 'hngusers'
+        user = getenv('USER')
+        password = getenv('PASSWORD')
+        host = getenv('HOST')
+        db_name = getenv('DATABASE')
 
         self.__engine = create_engine(f'mysql+mysqldb://{user}:{password}@{host}/{db_name}')
 
