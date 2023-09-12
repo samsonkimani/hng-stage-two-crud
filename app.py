@@ -5,8 +5,9 @@ from db.db import DB
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
+import os
 
-load_dotenv('.env')
+load_dotenv()
 
 db = DB()
 
@@ -14,13 +15,12 @@ db.reload()
 
 app = Flask(__name__)
 # setting up the database to support migrations
-# user = getenv('USER')
-# password = getenv('PASSWORD')
-# host = getenv('HOST')
-# db_name = getenv('DATABASE')
-# port = getenv('PORT')
+user = os.getenv('USER')
+password = os.getenv('PASSWORD')
+host = os.getenv('HOST')
+db_name = os.getenv('DATABASE')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://hngusers_user:RzCBucKW90rSeoJzzeDJaCg03Hb4Fk7x@dpg-ck05infhdsdc73cvp1p0-a/hngusers'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@{host}/{db_name}'
 dbase = SQLAlchemy(app)
 migrate = Migrate(app, dbase)
 

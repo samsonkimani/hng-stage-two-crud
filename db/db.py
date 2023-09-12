@@ -5,7 +5,7 @@ from os import getenv
 from models.user import Base
 from dotenv import load_dotenv
 
-load_dotenv('.env')
+load_dotenv()
 
 
 class DB:
@@ -21,14 +21,14 @@ class DB:
         Constructor
         """
 
-        # user = getenv('USER')
-        # password = getenv('PASSWORD')
-        # host = getenv('HOST')
-        # db_name = getenv('DATABASE')
-        # port = getenv('PORT')
+        user = getenv('USER')
+        password = getenv('PASSWORD')
+        host = getenv('HOST')
+        db_name = getenv('DATABASE')
+        port = getenv('PORT')
 
         # self.__engine = create_engine(f'postgresql://{user}:{password}@{host}/{db_name}')
-        self.__engine = create_engine('postgresql://hngusers_user:RzCBucKW90rSeoJzzeDJaCg03Hb4Fk7x@dpg-ck05infhdsdc73cvp1p0-a/hngusers')
+        self.__engine = create_engine(f'postgresql://{user}:{password}@{host}/{db_name}')
 
 
     def reload(self):

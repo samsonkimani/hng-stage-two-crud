@@ -51,11 +51,10 @@ Creating a user
 ** On creating a user the response will be the user id which can be used for CRUD operations
 
 ```
-samson@pc:~/hng-stage-two-crud$ curl -X POST "http://localhost:5000/api?f_name=John&l_name=Doe&user_email=johndoe@exampl.com"
+samson@pc:~/hng-stage-two-crud$ curl -X POST "https://hng-stage-two-crud.onrender.com/api?f_name=John&l_name=Doe&user_email=johndoe@example.com"
 
 
-"84650a8e53274bc5bf591e45f191fdea"
-
+"bff9a3bec6a040c3b65b2b9782b40caf"
 
 ```
 
@@ -64,9 +63,10 @@ updating a user
 ** The response will be updated user
 
 ```
-samson@pc:~/hng-stage-two-crud$ curl -X PUT -d "f_name=UpdatedName&l_name=sam&user_email=updatedemail@example.com" "http://localhost:5000/api/cd53c9ee77f045cc83896338485b9285"
+samson@pc:~/hng-stage-two-crud$ curl -X PUT -d "f_name=UpdatedName&user_email=updatedemail@example.com" "https:/hng-stage-two-crud.onrender.com/api/bff9a3bec6a040c3b65b2b9782b40caf"
 
-{"email":"updatedemail@example.com","f_name":"UpdatedName","id":"cd53c9ee77f045cc83896338485b9285","l_name":"sam"}
+{"email":"updatedemail@example.com","f_name":"UpdatedName","id":"bff9a3bec6a040c3b65b2b9782b40caf","l_name":"Doe"}
+
 
 ```
 
@@ -75,9 +75,9 @@ getting a user
 ** Using the userid provided above, one can get the user of that id
 
 ```
-samson@pc:~/hng-stage-two-crud$ curl -X GET "http://localhost:5000/api/84650a8e53274bc5bf591e45f191fdea"
+samson@pc:~/hng-stage-two-crud$ curl -X GET "https://hng-stage-two-crud.onrender.com/api/bff9a3bec6a040c3b65b2b9782b40caf"
 
-{"email":"johndoe@exampl.com","f_name":"John","id":"84650a8e53274bc5bf591e45f191fdea","l_name":"Doe"}
+{"email":"updatedemail@example.com","f_name":"UpdatedName","id":"bff9a3bec6a040c3b65b2b9782b40caf","l_name":"Doe"}
 
 
 ```
@@ -87,8 +87,9 @@ deleting a user
 ** To delete a user, one can use the id from the post or get request
 
 ```
-samson@pc:~/hng-stage-two-crud$ curl -X DELETE "http://localhost:5000/api/84650a8e53274bc5bf591e45f191fdea"
+samson@pc:~/hng-stage-two-crud$ curl -X DELETE "https://hng-stage-two-crud.onrender.com/api/bff9a3bec6a040c3b65b2b9782b40caf"
 
 {"message":"user deleted"}
+
 
 ```
