@@ -14,11 +14,11 @@ db.reload()
 
 app = Flask(__name__)
 # setting up the database to support migrations
-user = getenv('USER')
-password = getenv('PASSWORD')
-host = getenv('HOST')
-db_name = getenv('DATABASE')
-port = getenv('PORT')
+# user = getenv('USER')
+# password = getenv('PASSWORD')
+# host = getenv('HOST')
+# db_name = getenv('DATABASE')
+# port = getenv('PORT')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://hngusers_user:RzCBucKW90rSeoJzzeDJaCg03Hb4Fk7x@dpg-ck05infhdsdc73cvp1p0-a/hngusers'
 dbase = SQLAlchemy(app)
