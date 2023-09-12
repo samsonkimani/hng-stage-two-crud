@@ -27,7 +27,8 @@ class DB:
         db_name = getenv('DATABASE')
         port = getenv('PORT')
 
-        self.__engine = create_engine(f'postgresql://{user}:{password}@{host}/{db_name}')
+        # self.__engine = create_engine(f'postgresql://{user}:{password}@{host}/{db_name}')
+        self.__engine = create_engine('postgres://hngusers_user:RzCBucKW90rSeoJzzeDJaCg03Hb4Fk7x@dpg-ck05infhdsdc73cvp1p0-a/hngusers')
 
 
     def reload(self):
