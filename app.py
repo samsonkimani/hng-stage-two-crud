@@ -14,7 +14,13 @@ db.reload()
 
 app = Flask(__name__)
 # setting up the database to support migrations
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://root:123456@localhost/hngusers'
+user = getenv('USER')
+password = getenv('PASSWORD')
+host = getenv('HOST')
+db_name = getenv('DATABASE')
+port = getenv('PORT')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@{host}:{port}/{db_name}'
 dbase = SQLAlchemy(app)
 migrate = Migrate(app, dbase)
 

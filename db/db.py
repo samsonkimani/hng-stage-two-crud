@@ -22,8 +22,9 @@ class DB:
         password = getenv('PASSWORD')
         host = getenv('HOST')
         db_name = getenv('DATABASE')
+        port = getenv('PORT')
 
-        self.__engine = create_engine(f'mysql+mysqldb://{user}:{password}@{host}/{db_name}')
+        self.__engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db_name}')
 
 
     def reload(self):

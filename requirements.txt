@@ -5,3 +5,4 @@ Flask-Migrate
 gunicorn
 python-dotenv
 mysqlclient
+psycopg2
