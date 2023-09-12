@@ -17,10 +17,10 @@ class DB:
         Constructor
         """
 
-        # user = getenv('root')
-        # password = getenv('123456')
-        # host = getenv('localhost')
-        # db_name = getenv('hngusers')
+        # user = getenv('USER')
+        # password = getenv('PASSWORD')
+        # host = getenv('HOST')
+        # db_name = getenv('DATABASE')
 
         user = 'root'
         password = '123456'
@@ -62,3 +62,10 @@ class DB:
 
         if obj:
             self.__session.delete(obj)
+
+    def query(self, cls):
+        """
+        Query
+        """
+
+        return self.__session.query(cls)
