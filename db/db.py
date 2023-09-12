@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
 from os import getenv
 from models.user import Base
-from os import environ
+load_dotenv('.env')
 
 class DB:
     """
@@ -24,7 +24,7 @@ class DB:
         db_name = getenv('DATABASE')
         port = getenv('PORT')
 
-        self.__engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db_name}')
+        self.__engine = create_engine(f'postgresql://{user}:{password}@{host}/{db_name}')
 
 
     def reload(self):

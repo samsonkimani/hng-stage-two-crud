@@ -20,7 +20,7 @@ host = getenv('HOST')
 db_name = getenv('DATABASE')
 port = getenv('PORT')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@{host}:{port}/{db_name}'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 dbase = SQLAlchemy(app)
 migrate = Migrate(app, dbase)
 
