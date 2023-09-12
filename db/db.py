@@ -3,7 +3,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
 from os import getenv
 from models.user import Base
+from dotenv import load_dotenv
+
 load_dotenv('.env')
+
 
 class DB:
     """
