@@ -41,8 +41,7 @@ def user_exists(email):
 @app.route('/api', methods=['POST'])
 def add_user():
     id = generate_uuid()
-    f_name = request.args.get('f_name')
-    l_name = request.args.get('l_name')
+    user_name = request.form.get('user_name')
     email = request.args.get('user_email')
     user = user_exists(email)
     if user is False:
@@ -61,9 +60,7 @@ def get_user(user_id):
         user = db.query(User).filter_by(id=id).first()
         user_data = {
             'id': user.id,
-            'f_name': user.f_name,
-            'l_name': user.l_name,
-            'email': user.email
+            'user_name': user.user_name,
         }
         return jsonify(user_data), 200
     return jsonify({'message': 'user not found'}), 404
@@ -72,8 +69,7 @@ def get_user(user_id):
 def update_user(user_id):
     id = user_id
     if id:
-        f_name = request.form.get('f_name')
-        l_name = request.form.get('l_name')
+        user_name = request.form.get('user_name')
         email = request.form.get('user_email')
 
         user = db.query(User).filter_by(id=id).first()
@@ -87,8 +83,7 @@ def update_user(user_id):
 
         user_data = {
             'id': user.id,
-            'f_name': user.f_name,
-            'l_name': user.l_name,
+            'user_name': user.user_name,
             'email': user.email
         }
         return jsonify(user_data), 200

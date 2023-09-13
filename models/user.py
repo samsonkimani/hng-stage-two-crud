@@ -9,6 +9,5 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(String(60), primary_key=True)
-    f_name = Column(String(255))
-    l_name = Column(String(255))
+    user_name = Column(String(255))
     email = Column(String(255))
