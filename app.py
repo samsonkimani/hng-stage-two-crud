@@ -42,10 +42,10 @@ def user_exists(email):
 def add_user():
     id = generate_uuid()
     user_name = request.form.get('user_name')
-    email = request.args.get('user_email')
+    email = request.form.get('user_email')
     user = user_exists(email)
     if user is False:
-        new_user = User(id=id, f_name=f_name, l_name=l_name, email=email)
+        new_user = User(id=id, user_name, email=email)
 
         db.add(new_user)
         db.save()
