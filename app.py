@@ -32,26 +32,24 @@ def generate_uuid():
 def index():
     return jsonify({'message': 'follow the documentation to use the API'})
 
-def user_exists(email):
-    user = db.query(User).filter_by(email=email).first()
-    if user:
-        return True
-    return False
+# def user_exists(email):
+#     user = db.query(User).filter_by(email=email).first()
+#     if user:
+#         return True
+#     return False
 
 @app.route('/api', methods=['POST'])
 def add_user():
     id = generate_uuid()
     user_name = request.form.get('user_name')
     email = request.form.get('user_email')
-    user = user_exists(email)
-    if user is False:
-        new_user = User(id=id, user_name=user_name, email=email)
 
-        db.add(new_user)
-        db.save()
-        return jsonify(new_user.id), 200
-    else:
-        return jsonify({'message': 'user already exists'}), 400
+    new_user = User(id=id, user_name=user_name, email=email)
+
+    db.add(new_user)
+    db.save()
+    return jsonify(new_user.id), 200
+
 
 @app.route('/api/<string:user_id>', methods=['GET'])
 def get_user(user_id):
