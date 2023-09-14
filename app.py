@@ -93,10 +93,14 @@ def delete_user(user_id):
     id = user_id
     if id:
         user = db.query(User).filter_by(id=id).first()
-        db.delete(user)
-        db.save()
-        return jsonify({'message': 'user deleted'}), 200
-    return jsonify({'message': 'user not found'}), 404
+        if user:
+            db.delete(user)
+            db.save()
+            return jsonify({'message': 'user deleted'}), 200
+        else:
+            return jsonify({'message': 'user not found'}), 404
+
+    return jsonify({'message': 'id is needed'}), 404
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000)

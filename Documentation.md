@@ -5,7 +5,7 @@ In this example, we'll demonstrate how to use the `curl` command to send a POST 
 ## Curl Command
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "JohnDoe", "user_email": "johndoe@example.com"}' "https://hng-stage-two-crud.onrender.com/api"
+curl -X POST -F "user_name=John Doe" -F "user_email=johnkimanijkhfjs.com" "https://hng-stage-two-crud.onrender.com/api"
 
 ```
 
@@ -13,9 +13,10 @@ curl -X POST -H "Content-Type: application/json" -d '{"user_name": "JohnDoe", "u
  A user id is returned
 
 ```
-samson@pc:~/hng-stage-two-crud$ curl -X POST -H "Content-Type: application/json" -d '{"user_name": "JohnDoe", "user_email": "johndoe@example.com"}' "https://hng-stage-two-crud.onrender.com/api"
+samson@pc:~/hng-stage-two-crud$ curl -X POST -F "user_name=John Doe" -F "user_email=johnkimanijkhfjs.com" "https://hng-stage-two-crud.onrender.com/api"
 
-"f52d8dfcac0f4885a40f2791c42d6dc6"
+"1b6b10f048c747ecafc956160e5b044c"
+"
 ```
 
 ### 2. Using Curl to Send a GET Request to Get User by ID
@@ -28,6 +29,12 @@ In this example, we'll demonstrate how to use the `curl` command to send a GET r
 curl -X GET "https://hng-stage-two-crud.onrender.com/api/<user_id>"
 ```
 
+getting the user data
+```
+samson@pc:~/hng-stage-two-crud$ curl -X GET "https://hng-stage-two-crud.onrender.com/api/1b6b10f048c747ecafc956160e5b044c"
+
+{"email":"johnkimanijkhfjs.com","id":"1b6b10f048c747ecafc956160e5b044c","user_name":"John Doe"}
+```
 
 
 ### 3. Update User by ID
@@ -41,7 +48,11 @@ In this example, we'll demonstrate how to use the `curl` command to send a PUT r
 ## Curl Command
 
 ```bash
-curl -X PUT -d "user_name=UpdatedName" -d "user_email=updated.email@example.com" "https://hng-stage-two-crud.onrender.com/api/<user_id>"
+samson@pc:~/hng-stage-two-crud$ curl -X PUT -F "user_name=NEW.user" -F "user_email=johnkima.new.com" "https://hng-stage-two-crud.onrender.com/api/1b6b10f048c747ecafc956160e5b044c"
+
+{"email":"johnkima.new.com","id":"1b6b10f048c747ecafc956160e5b044c","user_name":"NEW.user"}
+
+
 ```
 
 
@@ -57,5 +68,8 @@ In this example, we'll demonstrate how to use the `curl` command to send a DELET
 
 
 ```bash
-curl -X DELETE "https://hng-stage-two-crud.onrender.com/api<user_id>"
+samson@pc:~/hng-stage-two-crud$ curl -X DELETE "https://hng-stage-two-crud.onrender.com/api/1b6b10f048c747ecafc956160e5b044c"
+
+{"message":"user deleted"}
+
 ```
