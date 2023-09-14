@@ -45,7 +45,7 @@ def add_user():
     email = request.form.get('user_email')
     user = user_exists(email)
     if user is False:
-        new_user = User(id=id, user_name, email=email)
+        new_user = User(id=id, user_name=user_name, email=email)
 
         db.add(new_user)
         db.save()
