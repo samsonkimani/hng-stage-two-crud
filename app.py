@@ -41,8 +41,8 @@ def user_exists(email):
 @app.route('/api', methods=['POST'])
 def add_user():
     id = generate_uuid()
-    user_name = request.form.get('user_name')
-    email = request.form.get('user_email')
+    user_name = request.args.get('user_name')
+    email = request.args.get('user_email')
     user = user_exists(email)
     if user is False:
         new_user = User(id=id, user_name=user_name, email=email)
