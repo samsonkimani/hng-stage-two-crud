@@ -6,6 +6,16 @@ In this example, we'll demonstrate how to use the `curl` command to send a POST 
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"user_name": "JohnDoe", "user_email": "johndoe@example.com"}' "https://hng-stage-two-crud.onrender.com/api"
+
+```
+
+## Server response
+ A user id is returned
+
+```
+samson@pc:~/hng-stage-two-crud$ curl -X POST -H "Content-Type: application/json" -d '{"user_name": "JohnDoe", "user_email": "johndoe@example.com"}' "https://hng-stage-two-crud.onrender.com/api"
+
+"f52d8dfcac0f4885a40f2791c42d6dc6"
 ```
 
 ### 2. Using Curl to Send a GET Request to Get User by ID

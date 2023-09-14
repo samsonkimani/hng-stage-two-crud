@@ -61,6 +61,7 @@ def get_user(user_id):
         user_data = {
             'id': user.id,
             'user_name': user.user_name,
+            'email': user.email
         }
         return jsonify(user_data), 200
     return jsonify({'message': 'user not found'}), 404
@@ -73,10 +74,8 @@ def update_user(user_id):
         email = request.form.get('user_email')
 
         user = db.query(User).filter_by(id=id).first()
-        if f_name:
-            user.f_name = f_name
-        if l_name:
-            user.l_name = l_name
+        if user_name:
+            user.user_name = user_name
         if email:
             user.email = email
         db.save()
